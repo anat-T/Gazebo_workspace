@@ -15,26 +15,16 @@ box). On a hit, the arm descends to touch the box, attaches it via the
 not just assumed), and carries it back to the home pose. On a miss, the arm
 just stays at its (empty) guessed spot.
 
-See `/home/anat/.claude/plans/proud-sleeping-valley.md` for the original
-design rationale. The mission mechanic described there (camera-based crop
-search) was later replaced with this simpler single-guess version at the
-user's request; this README reflects what's actually implemented and
-verified working now.
-
 ## Important: network isolation
+`demo.launch.py` sets `ROS_DOMAIN_ID=33` for every process it launches, so running the demo itself is safe by default.
 
-This lab's network carries other people's real ROS2 systems on the default
-ROS domain (`ROS_DOMAIN_ID=0`). `demo.launch.py` sets `ROS_DOMAIN_ID=33` for
-every process it launches, so running the demo itself is safe by default.
-**But any `ros2` CLI command you run yourself in another terminal to
-inspect/interact with it (`ros2 topic echo`, `ros2 control list_controllers`,
-etc.) needs the same domain, or it won't see the demo's nodes at all:**
+Run:
 
 ```bash
 export ROS_DOMAIN_ID=33
 ```
 
-Run this once per terminal before any manual `ros2 ...` command against this
+once per terminal before any manual `ros2 ...` command against this
 demo. If you ever see unfamiliar nodes (e.g. something like
 `/experiment_setup`) in `ros2 node list`, you're on the wrong domain.
 

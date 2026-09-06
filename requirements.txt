@@ -1,0 +1,10 @@
+# This project reuses clair-robotics-stack's camera/vision code directly
+# (ObjectDetection / YOLO-World) rather than duplicating it - install it as
+# an editable package first:
+#
+#   pip install -e ../clair-robotics-stack
+#
+# That pulls in ultralytics (YOLO-World) transitively. This file only lists
+# what's needed on top of that for this project's own nodes:
+requests
+numpy

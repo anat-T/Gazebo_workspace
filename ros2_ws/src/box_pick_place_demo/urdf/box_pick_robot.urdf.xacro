@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+  Top-level xacro for one UR5e arm in this demo: wraps ur_description's
+  ur_robot macro (same one ur_simulation_gz's own top xacro uses) with the
+  ign_ros2_control plugin for Gazebo control, plus a DetachableJoint plugin
+  on the wrist (kept for the gripper/attach-detach topics to exist and be
+  visible, even though the mission no longer calls attach() on it - see
+  search_and_pick_node.py's docstring for why: it was found to reliably
+  fling the box a meter or more away the instant attach() was called, with
+  no source access available to debug further, so the mission demonstrates
+  a successful pick by the arm reaching the box's true position and
+  stopping there, not by anything actually attaching to the wrist).
+
+  Not included alongside ur.urdf.xacro because that file is itself a full
+  <robot> document and cannot be xacro:include'd inside another one - so
+  this file re-does the small amount of top-level wiring ur.urdf.xacro does,
+  trimmed to only the sim_ignition path (no real-hardware/RTDE args), and
+  adds the DetachableJoint block.
+-->
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="$(arg name)">
+
+  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
+
+  <xacro:arg name="name" default="robot_a"/>
+  <xacro:arg name="ur_type" default="ur5e"/>
+  <xacro:arg name="tf_prefix" default="robot_a_"/>
+  <xacro:arg name="simulation_controllers" default=""/>
+
+  <!-- DetachableJoint wiring - see file docstring: view/topic-only, the
+       mission never actually calls attach(). -->
+  <xacro:arg name="child_model" default="box_a"/>
+  <xacro:arg name="attach_topic" default="/robot_a/gripper/attach"/>
+  <xacro:arg name="detach_topic" default="/robot_a/gripper/detach"/>
+  <xacro:arg name="output_topic" default="/robot_a/gripper/state"/>
+
+  <link name="world"/>
+
+  <xacro:ur_robot
+    name="$(arg name)"
+    tf_prefix="$(arg tf_prefix)"
+    parent="world"
+    joint_limits_parameters_file="$(find ur_description)/config/$(arg ur_type)/joint_limits.yaml"
+    kinematics_parameters_file="$(find ur_description)/config/$(arg ur_type)/default_kinematics.yaml"
+    physical_parameters_file="$(find ur_description)/config/$(arg ur_type)/physical_parameters.yaml"
+    visual_parameters_file="$(find ur_description)/config/$(arg ur_type)/visual_parameters.yaml"
+    safety_limits="false"
+    sim_gazebo="false"
+    sim_ignition="true"
+    headless_mode="false"
+    initial_positions="${xacro.load_yaml('$(find ur_description)/config/initial_positions.yaml')}"
+    use_tool_communication="false"
+    >
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:ur_robot>
+
+  <gazebo reference="world"/>
+
+  <gazebo>
+    <plugin filename="libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+      <parameters>$(arg simulation_controllers)</parameters>
+      <!-- ur_description's own xacro uses <controller_manager_node_name>,
+           but the plugin binary actually installed on this machine
+           (libign_ros2_control-system.so) only recognizes
+           <controller_manager_name> (confirmed via `strings` on the .so) -
+           a version-skew bug between ur_description and ign_ros2_control on
+           this machine. The wrong tag is silently ignored, so both robots'
+           controller managers defaulted to the same literal node name
+           "controller_manager" and collided (visible as an
+           "update_rate parameter not set" error and the two spawners never
+           finding their own named controller_manager). -->
+      <controller_manager_name>$(arg tf_prefix)controller_manager</controller_manager_name>
+      <!-- Without this, the plugin looks up the <ros2_control> block by
+           querying a node literally named "robot_state_publisher" for its
+           "robot_description" parameter - which doesn't exist here since
+           each robot's node is named "<tf_prefix>robot_state_publisher" to
+           avoid a two-robots-one-name clash. Without a matching
+           robot_param_node, the lookup silently fails and the plugin falls
+           back to real-hardware defaults (ur_robot_driver/URPositionHardwareInterface),
+           which then fails to load - this was found by actually launching
+           the demo and reading the resulting Gazebo error. -->
+      <robot_param_node>$(arg tf_prefix)robot_state_publisher</robot_param_node>
+    </plugin>
+  </gazebo>
+
+  <!-- No reference="..." here - SDF only allows <plugin> as a child of
+       <model>/<world>/<sensor>, never <link>; the plugin's own
+       <parent_link> parameter below is what targets the link. -->
+  <gazebo>
+    <plugin filename="ignition-gazebo-detachable-joint-system" name="ignition::gazebo::systems::DetachableJoint">
+      <parent_link>$(arg tf_prefix)wrist_3_link</parent_link>
+      <child_model>$(arg child_model)</child_model>
+      <child_link>link</child_link>
+      <attach_topic>$(arg attach_topic)</attach_topic>
+      <detach_topic>$(arg detach_topic)</detach_topic>
+      <output_topic>$(arg output_topic)</output_topic>
+    </plugin>
+  </gazebo>
+
+</robot>

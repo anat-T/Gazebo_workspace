@@ -1,0 +1,226 @@
+<?xml version="1.0" ?>
+<!--
+  Two independent "pick the box" cells in one shared world.
+
+  Cell A (robot_a): wide-margin belief, must search.
+  Cell B (robot_b): narrow-margin belief ("help"), finds the box almost
+  immediately.
+
+  Robots themselves are NOT defined here - they are spawned dynamically by
+  launch/demo.launch.py (via `ros_gz_sim create`) so their URDF/xacro can be
+  built with per-robot tf_prefix/controller args. This file only contains
+  the static scene: ground, lighting, tables, boxes, and each cell's fixed
+  overhead camera.
+
+  Each robot is mounted ON TOP of its table (spawned at z=0.75, see
+  demo.launch.py's TABLE_HEIGHT_M), not standing on the ground beside it -
+  so each table's footprint is positioned to include the robot's own (x, y)
+  mount point, with the box within reach further out on the same surface.
+-->
+<sdf version="1.9">
+  <world name="box_pick_demo">
+
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin filename="ignition-gazebo-physics-system" name="ignition::gazebo::systems::Physics">
+    </plugin>
+    <plugin filename="ignition-gazebo-user-commands-system" name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+    <plugin filename="ignition-gazebo-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="ignition-gazebo-contact-system" name="ignition::gazebo::systems::Contact">
+    </plugin>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.5 0.5 0.5 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.3 0.2 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ============================= CELL A ============================= -->
+    <!-- robot_a is spawned at world pose (0, 0, 0.75) by demo.launch.py -
+         on top of table_a, not on the ground beside it. -->
+
+    <model name="table_a">
+      <static>true</static>
+      <!-- Footprint x:[-0.15,0.85] y:[-0.35,0.35] includes the robot's own
+           (0,0) mount point (near the back edge) so it sits ON the table,
+           with the box further out within its ~0.85m reach from the base -
+           see ik_solver.py's docstring; reachability of this exact layout
+           was checked numerically (solve_ik_position) before being fixed
+           here. -->
+      <pose>0.35 0 0.375 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>1.0 0.7 0.75</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>1.0 0.7 0.75</size></box></geometry>
+          <material>
+            <ambient>0.55 0.55 0.58 1</ambient>
+            <diffuse>0.55 0.55 0.58 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box_a">
+      <!-- box_a's true pose - belief_region_node reads this live via the
+           bridged /model/box_a/pose topic, it is not hardcoded anywhere
+           else in the stack. -->
+      <!-- Centered directly in front of the robot (local y=0) rather than
+           off to the side - a more comfortable, natural reach. -->
+      <pose>0.30 0 0.78 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.15</mass>
+          <inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz>
+                    <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><box><size>0.06 0.06 0.06</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.06 0.06 0.06</size></box></geometry>
+          <material>
+            <ambient>0.45 0.28 0.12 1</ambient>
+            <diffuse>0.45 0.28 0.12 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="camera_mount_a">
+      <!-- Ceiling-mounted, not on a floor/table-standing pole: just a fixed
+           point in space (with a small visual plate so it's visible in the
+           GUI) directly above the table, looking straight down. -->
+      <static>true</static>
+      <pose>0.35 0 0 0 0 0</pose>
+      <link name="camera_link">
+        <pose>0 0 1.95 0 1.5708 0</pose>
+        <visual name="mount_plate">
+          <geometry><box><size>0.1 0.1 0.02</size></box></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+        </visual>
+        <sensor name="camera_a" type="rgbd_camera">
+          <topic>robot_a/camera</topic>
+          <update_rate>10</update_rate>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image><width>640</width><height>480</height></image>
+            <clip><near>0.1</near><far>10.0</far></clip>
+          </camera>
+        </sensor>
+      </link>
+    </model>
+
+    <!-- ============================= CELL B ============================= -->
+    <!-- robot_b is spawned at world pose (2.5, 0, 0.75) by demo.launch.py -
+         on top of table_b, not on the ground beside it. -->
+
+    <model name="table_b">
+      <static>true</static>
+      <pose>2.85 0 0.375 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>1.0 0.7 0.75</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>1.0 0.7 0.75</size></box></geometry>
+          <material>
+            <ambient>0.55 0.55 0.58 1</ambient>
+            <diffuse>0.55 0.55 0.58 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="box_b">
+      <!-- Same offset from its own table/robot as box_a (0, 0.10, 0.03)
+           local - not mirrored - so the only difference between the two
+           cells is the belief margin, nothing about the physical setup. -->
+      <!-- Same offset from its own table/robot as box_a (0, 0, 0.03) local. -->
+      <pose>2.80 0 0.78 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.15</mass>
+          <inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz>
+                    <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><box><size>0.06 0.06 0.06</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.06 0.06 0.06</size></box></geometry>
+          <material>
+            <ambient>0.45 0.28 0.12 1</ambient>
+            <diffuse>0.45 0.28 0.12 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="camera_mount_b">
+      <!-- Ceiling-mounted, not on a floor/table-standing pole. -->
+      <static>true</static>
+      <pose>2.85 0 0 0 0 0</pose>
+      <link name="camera_link">
+        <pose>0 0 1.95 0 1.5708 0</pose>
+        <visual name="mount_plate">
+          <geometry><box><size>0.1 0.1 0.02</size></box></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+        </visual>
+        <sensor name="camera_b" type="rgbd_camera">
+          <topic>robot_b/camera</topic>
+          <update_rate>10</update_rate>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image><width>640</width><height>480</height></image>
+            <clip><near>0.1</near><far>10.0</far></clip>
+          </camera>
+        </sensor>
+      </link>
+    </model>
+
+  </world>
+</sdf>

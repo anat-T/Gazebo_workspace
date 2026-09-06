@@ -1,0 +1,39 @@
+# Controller-manager params for robot_a. Controller (and controller_manager)
+# names are prefixed per-robot on purpose: since both robots' controllers
+# live in the SAME Gazebo process (ign_ros2_control creates one embedded
+# controller_manager node per spawned model), giving each controller a
+# globally-unique name is what keeps their command topics
+# (/robot_a_joint_trajectory_controller/joint_trajectory vs.
+# /robot_b_joint_trajectory_controller/joint_trajectory) from colliding,
+# without depending on the plugin supporting ROS namespaces.
+robot_a_controller_manager:
+  ros__parameters:
+    update_rate: 100 # Hz
+    use_sim_time: true
+
+    robot_a_joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    robot_a_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+robot_a_joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - robot_a_shoulder_pan_joint
+      - robot_a_shoulder_lift_joint
+      - robot_a_elbow_joint
+      - robot_a_wrist_1_joint
+      - robot_a_wrist_2_joint
+      - robot_a_wrist_3_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.2
+      goal_time: 0.0

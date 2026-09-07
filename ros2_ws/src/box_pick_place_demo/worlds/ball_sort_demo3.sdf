@@ -1,0 +1,293 @@
+<?xml version="1.0" ?>
+<!--
+  Scene 3: same single-robot "sort the ball" cell and layout as
+  ball_sort_demo.sdf (scene 1) - two balls at x=0.40 split across
+  y=-0.08/+0.08, two baskets at x=0.65 split the same way - but BOTH balls
+  and BOTH baskets are green this time, so color can't disambiguate them.
+  The robot's job is to pick the ball physically on its RIGHT (smaller y,
+  see ball_region_node.py's docstring for the left/right convention) and
+  place it in the basket on its LEFT (larger y) - a cross-diagonal move,
+  not a same-side one.
+
+  ball_a/basket_a sit at y=-0.08 (right), ball_b/basket_b at y=+0.08 (left) -
+  neutral, non-side-implying names are used anyway (the mission determines
+  "right"/"left" from live poses, not from these names) so the SDF doesn't
+  quietly become the source of truth for something the code should verify
+  itself; ball_sort_demo3.launch.py's DetachableJoint child_model is still
+  hardwired to ball_a specifically, since we (the SDF's authors) do know
+  it's the one at y=-0.08.
+
+  The robot itself is NOT defined here - spawned dynamically by
+  launch/ball_sort_demo3.launch.py (via `ros_gz_sim create`), same pattern
+  as ball_sort_demo.sdf. This file only contains the static scene: ground,
+  lighting, table, balls, baskets, and the fixed overhead camera.
+-->
+<sdf version="1.9">
+  <world name="ball_sort_demo3">
+
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin filename="ignition-gazebo-physics-system" name="ignition::gazebo::systems::Physics">
+    </plugin>
+    <plugin filename="ignition-gazebo-user-commands-system" name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+    <plugin filename="ignition-gazebo-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="ignition-gazebo-contact-system" name="ignition::gazebo::systems::Contact">
+    </plugin>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.5 0.5 0.5 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.3 0.2 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Robot is spawned at world pose (0, 0, 0.75) by ball_sort_demo3.launch.py -
+         on top of this table, not on the ground beside it. -->
+    <model name="table">
+      <static>true</static>
+      <pose>0.35 0 0.375 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>1.0 0.7 0.75</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>1.0 0.7 0.75</size></box></geometry>
+          <material>
+            <ambient>0.55 0.55 0.58 1</ambient>
+            <diffuse>0.55 0.55 0.58 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Both balls at x=0.40 (same distance from the robot), split across
+         y=-0.08 (ball_a, physically on the robot's right)/+0.08 (ball_b,
+         physically on the robot's left) - a line perpendicular to the
+         robot's reach direction. Both green: this scene is a
+         position-based pick, not a color-based one. -->
+
+    <model name="ball_a">
+      <pose>0.40 -0.08 0.775 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.05</mass>
+          <inertia><ixx>0.00001</ixx><iyy>0.00001</iyy><izz>0.00001</izz>
+                    <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><sphere><radius>0.025</radius></sphere></geometry>
+          <surface>
+            <friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry><sphere><radius>0.025</radius></sphere></geometry>
+          <material>
+            <ambient>0.05 0.6 0.05 1</ambient>
+            <diffuse>0.05 0.6 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="ball_b">
+      <pose>0.40 0.08 0.775 0 0 0</pose>
+      <link name="link">
+        <inertial>
+          <mass>0.05</mass>
+          <inertia><ixx>0.00001</ixx><iyy>0.00001</iyy><izz>0.00001</izz>
+                    <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><sphere><radius>0.025</radius></sphere></geometry>
+          <surface>
+            <friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry><sphere><radius>0.025</radius></sphere></geometry>
+          <material>
+            <ambient>0.05 0.6 0.05 1</ambient>
+            <diffuse>0.05 0.6 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="basket_a">
+      <!-- On the robot's right (y=-0.08) - NOT the placement target this
+           scene (the target is the LEFT basket, basket_b). Static: only
+           needs to receive a ball, never move. -->
+      <static>true</static>
+      <pose>0.65 -0.08 0 0 0 0</pose>
+      <link name="link">
+        <collision name="bottom_collision">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.12 0.12 0.01</size></box></geometry>
+        </collision>
+        <visual name="bottom_visual">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.12 0.12 0.01</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+        <collision name="wall_pos_x_collision">
+          <pose>0.065 0 0.785 0 0 0</pose>
+          <geometry><box><size>0.01 0.14 0.06</size></box></geometry>
+        </collision>
+        <visual name="wall_pos_x_visual">
+          <pose>0.065 0 0.785 0 0 0</pose>
+          <geometry><box><size>0.01 0.14 0.06</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+        <collision name="wall_neg_x_collision">
+          <pose>-0.065 0 0.785 0 0 0</pose>
+          <geometry><box><size>0.01 0.14 0.06</size></box></geometry>
+        </collision>
+        <visual name="wall_neg_x_visual">
+          <pose>-0.065 0 0.785 0 0 0</pose>
+          <geometry><box><size>0.01 0.14 0.06</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+        <collision name="wall_pos_y_collision">
+          <pose>0 0.065 0.785 0 0 0</pose>
+          <geometry><box><size>0.12 0.01 0.06</size></box></geometry>
+        </collision>
+        <visual name="wall_pos_y_visual">
+          <pose>0 0.065 0.785 0 0 0</pose>
+          <geometry><box><size>0.12 0.01 0.06</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+        <collision name="wall_neg_y_collision">
+          <pose>0 -0.065 0.785 0 0 0</pose>
+          <geometry><box><size>0.12 0.01 0.06</size></box></geometry>
+        </collision>
+        <visual name="wall_neg_y_visual">
+          <pose>0 -0.065 0.785 0 0 0</pose>
+          <geometry><box><size>0.12 0.01 0.06</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="basket_b">
+      <!-- On the robot's left (y=+0.08) - the actual placement target this
+           scene. Static: only needs to receive a ball, never move.
+           ball_sort_node.py's basket_x/basket_y parameters (set in
+           ball_sort_demo3.launch.py) must match this pose's x/y. -->
+      <static>true</static>
+      <pose>0.65 0.08 0 0 0 0</pose>
+      <link name="link">
+        <collision name="bottom_collision">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.12 0.12 0.01</size></box></geometry>
+        </collision>
+        <visual name="bottom_visual">
+          <pose>0 0 0.755 0 0 0</pose>
+          <geometry><box><size>0.12 0.12 0.01</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+        <collision name="wall_pos_x_collision">
+          <pose>0.065 0 0.785 0 0 0</pose>
+          <geometry><box><size>0.01 0.14 0.06</size></box></geometry>
+        </collision>
+        <visual name="wall_pos_x_visual">
+          <pose>0.065 0 0.785 0 0 0</pose>
+          <geometry><box><size>0.01 0.14 0.06</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+        <collision name="wall_neg_x_collision">
+          <pose>-0.065 0 0.785 0 0 0</pose>
+          <geometry><box><size>0.01 0.14 0.06</size></box></geometry>
+        </collision>
+        <visual name="wall_neg_x_visual">
+          <pose>-0.065 0 0.785 0 0 0</pose>
+          <geometry><box><size>0.01 0.14 0.06</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+        <collision name="wall_pos_y_collision">
+          <pose>0 0.065 0.785 0 0 0</pose>
+          <geometry><box><size>0.12 0.01 0.06</size></box></geometry>
+        </collision>
+        <visual name="wall_pos_y_visual">
+          <pose>0 0.065 0.785 0 0 0</pose>
+          <geometry><box><size>0.12 0.01 0.06</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+        <collision name="wall_neg_y_collision">
+          <pose>0 -0.065 0.785 0 0 0</pose>
+          <geometry><box><size>0.12 0.01 0.06</size></box></geometry>
+        </collision>
+        <visual name="wall_neg_y_visual">
+          <pose>0 -0.065 0.785 0 0 0</pose>
+          <geometry><box><size>0.12 0.01 0.06</size></box></geometry>
+          <material><ambient>0.05 0.6 0.05 1</ambient><diffuse>0.05 0.6 0.05 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="camera_mount">
+      <!-- Ceiling-mounted, not on a floor/table-standing pole - same
+           pattern as box_pick_demo.sdf's camera_mount_a/b. -->
+      <static>true</static>
+      <pose>0.35 0 0 0 0 0</pose>
+      <link name="camera_link">
+        <pose>0 0 1.95 0 1.5708 0</pose>
+        <visual name="mount_plate">
+          <geometry><box><size>0.1 0.1 0.02</size></box></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+        </visual>
+        <sensor name="camera" type="rgbd_camera">
+          <topic>robot/camera</topic>
+          <update_rate>10</update_rate>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image><width>640</width><height>480</height></image>
+            <clip><near>0.1</near><far>10.0</far></clip>
+          </camera>
+        </sensor>
+      </link>
+    </model>
+
+  </world>
+</sdf>

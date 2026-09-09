@@ -12,9 +12,10 @@ from builtin_interfaces.msg import Duration
 from rclpy.node import Node
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
-from box_pick_place_demo.ik_solver import JOINT_NAMES, DEFAULT_SEED, solve_ik_pose_down
+from box_pick_place_demo.ik_solver import JOINT_NAMES, solve_ik_pose_down
 
-HOME_Q = list(DEFAULT_SEED)
+
+HOME_Q = [0.0, -1.5708, 0.0, -1.5708, 0.0, 0.0]
 
 
 class ArmCommander:

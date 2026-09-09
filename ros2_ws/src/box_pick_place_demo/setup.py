@@ -34,6 +34,7 @@ setup(
             "search_and_pick_node = box_pick_place_demo.search_and_pick_node:main",
             "ball_region_node = box_pick_place_demo.ball_region_node:main",
             "ball_sort_node = box_pick_place_demo.ball_sort_node:main",
+            "real_ball_sort_node = box_pick_place_demo.real_ball_sort_node:main",
         ],
     },
 )

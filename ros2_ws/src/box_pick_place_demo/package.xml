@@ -28,8 +28,16 @@
   <exec_depend>ros2_control</exec_depend>
   <exec_depend>ros2_controllers</exec_depend>
   <exec_depend>controller_manager</exec_depend>
+  <exec_depend>controller_manager_msgs</exec_depend>
   <exec_depend>ur_description</exec_depend>
   <exec_depend>ur_simulation_gz</exec_depend>
+  <!-- Real-hardware only (real_ball_sort_node.py / real_grasp_controller.py):
+       onrobot_2fg7/onrobot_2fg7_interfaces are fetched via
+       ros2_ws/dependencies.repos, not vendored; ur_robot_driver is a
+       normal apt/rosdep dependency (ros-humble-ur-robot-driver). -->
+  <exec_depend>onrobot_2fg7</exec_depend>
+  <exec_depend>onrobot_2fg7_interfaces</exec_depend>
+  <exec_depend>ur_robot_driver</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

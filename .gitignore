@@ -1,7 +1,14 @@
 ros2_ws/build/
 ros2_ws/install/
 ros2_ws/log/
+# External packages fetched via ros2_ws/dependencies.repos, not vendored.
+ros2_ws/src/onrobot_2fg7/
+ros2_ws/src/onrobot_2fg7_interfaces/
+ros2_ws/src/UR_OnRobot_ROS2/
+ros2_ws/src/OnRobot_ROS2_Driver/
+ros2_ws/src/OnRobot_ROS2_Description/
 recordings/
 __pycache__/
 *.pyc
 *.pt
+bags/*

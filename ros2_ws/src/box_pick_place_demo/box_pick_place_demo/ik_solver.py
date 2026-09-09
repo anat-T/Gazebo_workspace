@@ -66,6 +66,42 @@ def forward_kinematics(q) -> np.ndarray:
 # particular target, just a sane nullspace bias / starting point.
 DEFAULT_SEED = np.array([0.0, -1.2, 1.6, -1.97, -1.57, 0.0])
 
+# Real UR5e limits (ur_description's config/ur5e/joint_limits.yaml) - most
+# joints are +-360deg, but elbow_joint is physically constrained to just
+# +-180deg (the shoulder_lift joint gets in the way past that - see that
+# file's comment). The solvers below only check Cartesian position/
+# orientation error to decide "converged"; since each joint's rotation is
+# 2*pi-periodic, that check alone can be satisfied by a solution that's
+# wrapped some joint an extra full turn into a value nowhere near this
+# range - confirmed happening in practice (elbow_joint solved to roughly
+# -440deg for a real, if awkward, real-hardware target) - and since each
+# solve's result seeds the next one, one such solution compounds into
+# worse ones downstream. _wrap_and_validate() below is the fix.
+JOINT_LIMITS_RAD = [
+    (-2 * np.pi, 2 * np.pi),  # shoulder_pan_joint
+    (-2 * np.pi, 2 * np.pi),  # shoulder_lift_joint
+    (-np.pi, np.pi),          # elbow_joint - physically constrained, not +-2pi
+    (-2 * np.pi, 2 * np.pi),  # wrist_1_joint
+    (-2 * np.pi, 2 * np.pi),  # wrist_2_joint
+    (-2 * np.pi, 2 * np.pi),  # wrist_3_joint
+]
+
+
+def _wrap_and_validate(q, seed):
+    """Re-express each joint of `q` at its equivalent angle nearest to the
+    corresponding `seed` value (forward_kinematics is unaffected, since
+    shifting any joint by a multiple of 2*pi doesn't change _rot_z's
+    result), then check the wrapped result against JOINT_LIMITS_RAD. Returns
+    the wrapped q, or None if it's still out of range for some joint even
+    after wrapping (a genuine failure, not a wrapping artifact) - e.g.
+    elbow_joint needing more than +-180deg of motion to reach the target at
+    all, which no amount of rewrapping fixes."""
+    wrapped = seed + (np.asarray(q) - seed + np.pi) % (2 * np.pi) - np.pi
+    for angle, (lo, hi) in zip(wrapped, JOINT_LIMITS_RAD):
+        if not (lo <= angle <= hi):
+            return None
+    return wrapped
+
 
 def _position_jacobian(q, eps=1e-6):
     j = np.zeros((3, 6))
@@ -102,7 +138,7 @@ def solve_ik_position(target_xyz, seed=None, max_iters=200, tol=1e-4, damping=0.
         pos = forward_kinematics(q)[:3, 3]
         err = target - pos
         if np.linalg.norm(err) < tol:
-            return q
+            return _wrap_and_validate(q, bias)
         j = _position_jacobian(q)
         jjt = j @ j.T + (damping ** 2) * np.eye(3)
         dq_task = j.T @ np.linalg.solve(jjt, err)
@@ -112,7 +148,7 @@ def solve_ik_position(target_xyz, seed=None, max_iters=200, tol=1e-4, damping=0.
 
     pos = forward_kinematics(q)[:3, 3]
     if np.linalg.norm(target - pos) < 0.01:
-        return q
+        return _wrap_and_validate(q, bias)
     return None
 
 
@@ -165,7 +201,7 @@ def solve_ik_pose_down(target_xyz, seed=None, max_iters=300, tol=1e-4, damping=0
         orient_err = -_pointing_error(q)
         err = np.concatenate([pos_err, orient_err])
         if np.linalg.norm(pos_err) < tol and np.linalg.norm(orient_err) < 1e-3:
-            return q
+            return _wrap_and_validate(q, bias)
         j = _pose_jacobian(q)
         jjt = j @ j.T + (damping ** 2) * np.eye(6)
         dq_task = j.T @ np.linalg.solve(jjt, err)
@@ -176,5 +212,5 @@ def solve_ik_pose_down(target_xyz, seed=None, max_iters=300, tol=1e-4, damping=0
     pos = forward_kinematics(q)[:3, 3]
     orient_err = _pointing_error(q)
     if np.linalg.norm(target - pos) < 0.01 and np.linalg.norm(orient_err) < 0.1:
-        return q
+        return _wrap_and_validate(q, bias)
     return None

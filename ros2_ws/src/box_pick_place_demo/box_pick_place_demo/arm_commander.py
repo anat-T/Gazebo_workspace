@@ -12,9 +12,15 @@ from builtin_interfaces.msg import Duration
 from rclpy.node import Node
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
-from box_pick_place_demo.ik_solver import JOINT_NAMES, DEFAULT_SEED, solve_ik_pose_down
+from box_pick_place_demo.ik_solver import DEFAULT_SEED, JOINT_NAMES, solve_ik_position, solve_ik_pose_down
 
-HOME_Q = list(DEFAULT_SEED)
+# Real UR5e joint values (shoulder_pan, shoulder_lift, elbow, wrist_1,
+# wrist_2, wrist_3), read off /joint_states with the real arm jogged to a
+# pose confirmed clear of the table, mount, and cables - not derived from
+# ik_solver's DEFAULT_SEED, which is only a numerical convergence aid with
+# no guarantee of being reachable safely (see ik_solver.py's own docstring
+# on DEFAULT_SEED).
+HOME_Q = [0.0, -1.5708, 0.0, -1.5708, 0.0, 0.0]
 
 
 class ArmCommander:
@@ -67,19 +73,79 @@ class ArmCommander:
     def move_home(self, duration_s: float = 3.0):
         self.move_to_joint_positions(HOME_Q, duration_s)
 
-    def move_to_world_point(self, x: float, y: float, z: float, duration_s: float = 3.0) -> bool:
+    def move_to_world_point(self, x: float, y: float, z: float, duration_s: float = 3.0,
+                             require_pointing_down: bool = True,
+                             prefer_pointing_down: bool = False) -> bool:
         """x, y, z in world frame. Converted to this robot's own base frame
         (its spawn offset, including height - the robot is mounted on top
         of its table, not on the ground) before solving IK, since
         ik_solver's forward_kinematics() is relative to the robot's
         base_link."""
         local_target = (x - self._base_xyz[0], y - self._base_xyz[1], z - self._base_xyz[2])
-        # Position + top-down orientation, not position-only: an
-        # unconstrained solve was reaching grasp points from the side
-        # rather than straight down, which looked wrong for a pick motion
-        # even though the DetachableJoint "gripper" itself doesn't actually
-        # need any particular approach angle to attach.
-        q = solve_ik_pose_down(local_target, seed=self._last_q)
+        # This is a local, gradient-based numerical solver, not a global
+        # one - it can fail to find a solution that genuinely exists,
+        # purely because the seed it started from led it into a bad local
+        # minimum. Confirmed on real hardware: solving from self._last_q
+        # (this project's usual seed, for continuity between moves) failed
+        # for a point later shown to be reachable (and already physically
+        # occupied by the real, correctly-oriented gripper) when solved
+        # instead from DEFAULT_SEED. Retry once from there before actually
+        # giving up - costs nothing when the first attempt succeeds.
+        #
+        # The solvers also reject (return None for) elbow-down solutions
+        # and ones that put a joint at/below the table - see ik_solver's
+        # configuration_ok(). When that rejects the solution reached from
+        # self._last_q (most likely right after move_home(): HOME_Q is the
+        # arm pointing straight up, which sits exactly between the
+        # elbow-up and elbow-down families, so it's a coin flip which one
+        # the solver walks into), the remaining seeds are elbow-up by
+        # construction: DEFAULT_SEED turned to face the target first,
+        # then DEFAULT_SEED as-is.
+        facing_seed = np.array(DEFAULT_SEED, dtype=float)
+        facing_seed[0] = np.arctan2(local_target[1], local_target[0])
+
+        def _solve(solve_fn):
+            for seed in (self._last_q, facing_seed, DEFAULT_SEED):
+                q = solve_fn(local_target, seed=seed)
+                if q is not None:
+                    return q
+            return None
+
+        if require_pointing_down:
+            # Position + top-down orientation, not position-only: an
+            # unconstrained solve was reaching grasp points from the side
+            # rather than straight down, which looked wrong for a pick
+            # motion even though the DetachableJoint "gripper" itself
+            # doesn't actually need any particular approach angle to
+            # attach. Only the actual pick/place moment needs this -
+            # transit/hover waypoints just need to get the arm into
+            # position, and constraining orientation there too shrinks the
+            # reachable envelope for no benefit (confirmed on real
+            # hardware: a transit point well within plain reach failed IK
+            # purely because pointing-down wasn't geometrically possible
+            # that high/far out, even though *some* valid orientation was).
+            q = _solve(solve_ik_pose_down)
+        else:
+            q = None
+            if prefer_pointing_down:
+                # Not hard-required, but try pointing-down first anyway:
+                # a fully unconstrained position-only solve leaves
+                # orientation to whatever the nullspace bias happens to
+                # settle on, which can land far from the previous
+                # waypoint's orientation even though position barely
+                # moved - confirmed on real hardware, consecutive
+                # transit/hover waypoints produced 60-90deg swings in
+                # individual joints purely from this, even though every
+                # single waypoint solved fine on its own. Preferring
+                # pointing-down here keeps the whole approach/retreat
+                # path oriented consistently whenever that's actually
+                # achievable, and only falls back to a fully free
+                # orientation when it isn't (e.g. a basket far enough out
+                # that pointing-down genuinely isn't geometrically
+                # possible there).
+                q = _solve(solve_ik_pose_down)
+            if q is None:
+                q = _solve(solve_ik_position)
         if q is None:
             self._node.get_logger().error(
                 f"arm_commander[{self._tf_prefix}]: IK failed for world point "

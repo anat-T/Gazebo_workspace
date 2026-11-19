@@ -51,6 +51,15 @@ def generate_launch_description():
         # part of this demo is the color-based place, not a search contrast.
         DeclareLaunchArgument("margin", default_value="0.03",
                                description="Belief-region half-extent (m) for the green ball."),
+        # Must match green_basket's actual <pose> x/y in whatever world_file
+        # is loaded - ball_sort_node.py has no live pose feed for the
+        # basket (unlike the ball, it never moves, so there's nothing to
+        # track), so a caller swapping in a world with the basket
+        # relocated (e.g. a randomized-layout sweep) needs to pass the
+        # matching position here too. Defaults match this package's own
+        # worlds/ball_sort_demo.sdf.
+        DeclareLaunchArgument("basket_x", default_value="0.65", description="green_basket's world x (m)."),
+        DeclareLaunchArgument("basket_y", default_value="0.08", description="green_basket's world y (m)."),
     ]
 
     gazebo_gui = LaunchConfiguration("gazebo_gui")
@@ -162,7 +171,11 @@ def generate_launch_description():
         package=PKG,
         executable="ball_sort_node",
         name="ball_sort_node",
-        parameters=[{"use_sim_time": True}],
+        parameters=[{
+            "use_sim_time": True,
+            "basket_x": ParameterValue(LaunchConfiguration("basket_x"), value_type=float),
+            "basket_y": ParameterValue(LaunchConfiguration("basket_y"), value_type=float),
+        }],
         condition=IfCondition(LaunchConfiguration("launch_mission")),
     )
     # Mission start (and its detach() call) is gated on the robot's own

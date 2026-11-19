@@ -40,11 +40,6 @@ TABLE_HEIGHT_M = 0.75
 BALL_NAMES = ["ball_a", "ball_b"]
 PICK_CHILD_MODEL = "ball_a"
 
-# basket_b's position in ball_sort_demo3.sdf (y=+0.08, the LEFT basket -
-# the actual placement target this scene) - must match its <pose>.
-BASKET_X = 0.65
-BASKET_Y = 0.08
-
 
 def generate_launch_description():
     set_ros_domain_id = SetEnvironmentVariable("ROS_DOMAIN_ID", ROS_DOMAIN_ID)
@@ -64,6 +59,11 @@ def generate_launch_description():
         # contrast.
         DeclareLaunchArgument("margin", default_value="0.03",
                                description="Belief-region half-extent (m) for the pick target."),
+        # basket_b's position in whatever world_file is loaded (the LEFT
+        # basket - the actual placement target this scene) - must match
+        # its <pose>. Same reasoning as scene1/scene2's basket_x/basket_y.
+        DeclareLaunchArgument("basket_x", default_value="0.65", description="basket_b's world x (m)."),
+        DeclareLaunchArgument("basket_y", default_value="0.08", description="basket_b's world y (m)."),
     ]
 
     gazebo_gui = LaunchConfiguration("gazebo_gui")
@@ -180,8 +180,8 @@ def generate_launch_description():
         parameters=[{
             "use_sim_time": True,
             "world_name": WORLD_NAME,
-            "basket_x": BASKET_X,
-            "basket_y": BASKET_Y,
+            "basket_x": ParameterValue(LaunchConfiguration("basket_x"), value_type=float),
+            "basket_y": ParameterValue(LaunchConfiguration("basket_y"), value_type=float),
             "ball_names": BALL_NAMES,
         }],
         condition=IfCondition(LaunchConfiguration("launch_mission")),

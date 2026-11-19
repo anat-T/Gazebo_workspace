@@ -8,11 +8,11 @@ repositories:
   onrobot_2fg7_interfaces:
     type: git
     url: https://github.com/davedovrat/onrobot_2fg7_interfaces.git
-    version: main
+    version: 070595b60f851a5208e36e3889392c116824187a  # main as of 2026-11-19, the version this was tested with
   onrobot_2fg7:
     type: git
     url: https://github.com/davedovrat/onrobot_2fg7.git
-    version: main
+    version: 1515b345fa4794a5b5414f5ab998907856d888c0  # main as of 2026-11-19, the version this was tested with
 
 # Alternative gripper/UR integration repos considered but not used
 # (preferred the pair above instead):

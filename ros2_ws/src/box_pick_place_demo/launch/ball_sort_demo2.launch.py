@@ -31,10 +31,6 @@ WORLD_NAME = "ball_sort_demo2"
 # in worlds/ball_sort_demo2.sdf), not standing on the ground beside it.
 TABLE_HEIGHT_M = 0.75
 
-# gray_basket's position in ball_sort_demo2.sdf - must match its <pose>.
-BASKET_X = 0.65
-BASKET_Y = 0.0
-
 
 def generate_launch_description():
     set_ros_domain_id = SetEnvironmentVariable("ROS_DOMAIN_ID", ROS_DOMAIN_ID)
@@ -53,6 +49,11 @@ def generate_launch_description():
         # part of this demo is the color-based place, not a search contrast.
         DeclareLaunchArgument("margin", default_value="0.03",
                                description="Belief-region half-extent (m) for the green ball."),
+        # Must match gray_basket's actual <pose> x/y in whatever world_file
+        # is loaded - same reasoning as scene1's basket_x/basket_y (see
+        # ball_sort_demo.launch.py's own comment on this).
+        DeclareLaunchArgument("basket_x", default_value="0.65", description="gray_basket's world x (m)."),
+        DeclareLaunchArgument("basket_y", default_value="0.0", description="gray_basket's world y (m)."),
     ]
 
     gazebo_gui = LaunchConfiguration("gazebo_gui")
@@ -168,8 +169,8 @@ def generate_launch_description():
         parameters=[{
             "use_sim_time": True,
             "world_name": WORLD_NAME,
-            "basket_x": BASKET_X,
-            "basket_y": BASKET_Y,
+            "basket_x": ParameterValue(LaunchConfiguration("basket_x"), value_type=float),
+            "basket_y": ParameterValue(LaunchConfiguration("basket_y"), value_type=float),
         }],
         condition=IfCondition(LaunchConfiguration("launch_mission")),
     )

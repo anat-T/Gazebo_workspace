@@ -1,0 +1,42 @@
+
+run_scene3_sweep: === starting run 6 (1/5) ===
+run_scene3_sweep: [scene3_run6] layout: basket_b=(0.647,0.014), basket_a=(0.355,-0.260), ball_b=(0.400,0.201), ball_a=(0.425,-0.062)
+run_scene3_sweep: [scene3_run6] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> scene3_runs/scene3_run6/video.mp4
+bag_to_video: done - 492 frames written to scene3_runs/scene3_run6/video.mp4
+bag_to_ee_trajectory: done - 983 samples (0 skipped) written to scene3_runs/scene3_run6/ee_trajectory.csv
+
+run_scene3_sweep: === starting run 7 (2/5) ===
+run_scene3_sweep: [scene3_run7] layout: basket_b=(0.673,0.103), basket_a=(0.374,-0.046), ball_b=(0.670,-0.242), ball_a=(0.479,-0.257)
+run_scene3_sweep: [scene3_run7] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> scene3_runs/scene3_run7/video.mp4
+bag_to_video: done - 487 frames written to scene3_runs/scene3_run7/video.mp4
+bag_to_ee_trajectory: done - 972 samples (0 skipped) written to scene3_runs/scene3_run7/ee_trajectory.csv
+
+run_scene3_sweep: === starting run 8 (3/5) ===
+run_scene3_sweep: [scene3_run8] layout: basket_b=(0.406,0.003), basket_a=(0.650,0.013), ball_b=(0.533,0.246), ball_a=(0.735,0.239)
+run_scene3_sweep: [scene3_run8] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> scene3_runs/scene3_run8/video.mp4
+bag_to_video: done - 465 frames written to scene3_runs/scene3_run8/video.mp4
+bag_to_ee_trajectory: done - 928 samples (0 skipped) written to scene3_runs/scene3_run8/ee_trajectory.csv
+
+run_scene3_sweep: === starting run 9 (4/5) ===
+run_scene3_sweep: [scene3_run9] layout: basket_b=(0.426,0.097), basket_a=(0.452,-0.259), ball_b=(0.609,0.170), ball_a=(0.613,-0.032)
+run_scene3_sweep: [scene3_run9] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> scene3_runs/scene3_run9/video.mp4
+bag_to_video: done - 450 frames written to scene3_runs/scene3_run9/video.mp4
+bag_to_ee_trajectory: done - 899 samples (0 skipped) written to scene3_runs/scene3_run9/ee_trajectory.csv
+
+run_scene3_sweep: === starting run 10 (5/5) ===
+run_scene3_sweep: [scene3_run10] layout: basket_b=(0.749,-0.199), basket_a=(0.732,0.157), ball_b=(0.533,-0.010), ball_a=(0.392,-0.076)
+run_scene3_sweep: [scene3_run10] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> scene3_runs/scene3_run10/video.mp4
+bag_to_video: done - 500 frames written to scene3_runs/scene3_run10/video.mp4
+bag_to_ee_trajectory: done - 1001 samples (0 skipped) written to scene3_runs/scene3_run10/ee_trajectory.csv
+
+run_scene3_sweep: === summary ===
+  scene3_run6: SUCCESS  -> scene3_runs/scene3_run6
+  scene3_run7: SUCCESS  -> scene3_runs/scene3_run7
+  scene3_run8: SUCCESS  -> scene3_runs/scene3_run8
+  scene3_run9: SUCCESS  -> scene3_runs/scene3_run9
+  scene3_run10: SUCCESS  -> scene3_runs/scene3_run10

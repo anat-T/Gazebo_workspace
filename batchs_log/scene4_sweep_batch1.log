@@ -1,0 +1,43 @@
+run_scene4_sweep: ball gap 2.0mm (center-to-center 52.0mm)
+
+run_scene4_sweep: === starting run 1 (1/5) ===
+run_scene4_sweep: [scene4_run1] layout: basket_a=(0.736,-0.223), basket_b=(0.736,0.017), basket_c=(0.736,0.257), ball_a=(0.538,0.084), ball_b=(0.538,0.136), ball_c=(0.538,0.188), basket_d=(0.331,0.127), target_basket=(0.736,0.257)
+run_scene4_sweep: [scene4_run1] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run1/video.mp4
+bag_to_video: done - 485 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run1/video.mp4
+bag_to_ee_trajectory: done - 970 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run1/ee_trajectory.csv
+
+run_scene4_sweep: === starting run 2 (2/5) ===
+run_scene4_sweep: [scene4_run2] layout: basket_a=(0.319,-0.261), basket_b=(0.319,-0.021), basket_c=(0.319,0.219), ball_a=(0.660,0.149), ball_b=(0.660,0.201), ball_c=(0.660,0.253), basket_d=(0.571,-0.202), target_basket=(0.319,0.219)
+run_scene4_sweep: [scene4_run2] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run2/video.mp4
+bag_to_video: done - 503 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run2/video.mp4
+bag_to_ee_trajectory: done - 1006 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run2/ee_trajectory.csv
+
+run_scene4_sweep: === starting run 3 (3/5) ===
+run_scene4_sweep: [scene4_run3] layout: basket_a=(0.301,-0.216), basket_b=(0.301,0.024), basket_c=(0.301,0.264), ball_a=(0.612,0.160), ball_b=(0.612,0.212), ball_c=(0.612,0.264), basket_d=(0.644,-0.079), target_basket=(0.301,0.264)
+run_scene4_sweep: [scene4_run3] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run3/video.mp4
+bag_to_video: done - 510 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run3/video.mp4
+bag_to_ee_trajectory: done - 1020 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run3/ee_trajectory.csv
+
+run_scene4_sweep: === starting run 4 (4/5) ===
+run_scene4_sweep: [scene4_run4] layout: basket_a=(0.428,-0.251), basket_b=(0.428,-0.011), basket_c=(0.428,0.229), ball_a=(0.636,-0.191), ball_b=(0.636,-0.139), ball_c=(0.636,-0.087), basket_d=(0.732,0.243), target_basket=(0.732,0.243)
+run_scene4_sweep: [scene4_run4] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run4/video.mp4
+bag_to_video: done - 482 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run4/video.mp4
+bag_to_ee_trajectory: done - 964 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run4/ee_trajectory.csv
+
+run_scene4_sweep: === starting run 5 (5/5) ===
+run_scene4_sweep: [scene4_run5] layout: basket_a=(0.327,-0.256), basket_b=(0.327,-0.016), basket_c=(0.327,0.224), ball_a=(0.723,-0.226), ball_b=(0.723,-0.174), ball_c=(0.723,-0.122), basket_d=(0.737,0.079), target_basket=(0.327,0.224)
+run_scene4_sweep: [scene4_run5] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run5/video.mp4
+bag_to_video: done - 481 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run5/video.mp4
+bag_to_ee_trajectory: done - 962 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run5/ee_trajectory.csv
+
+run_scene4_sweep: === summary ===
+  scene4_run1: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run1
+  scene4_run2: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run2
+  scene4_run3: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run3
+  scene4_run4: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run4
+  scene4_run5: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run5

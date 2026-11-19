@@ -1,0 +1,10 @@
+
+run_scene1_sweep: === starting run 21 (1/1) ===
+run_scene1_sweep: [scene1_run21] layout: green_basket=(0.302,-0.199), red_basket=(0.495,0.078), green_ball=(0.613,-0.122), red_ball=(0.650,0.244)
+run_scene1_sweep: [scene1_run21] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run21/video.mp4
+bag_to_video: done - 493 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run21/video.mp4
+bag_to_ee_trajectory: done - 985 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run21/ee_trajectory.csv
+
+run_scene1_sweep: === summary ===
+  scene1_run21: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run21

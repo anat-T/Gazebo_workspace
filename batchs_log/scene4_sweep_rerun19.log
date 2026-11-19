@@ -1,0 +1,11 @@
+run_scene4_sweep: ball gap 2.0mm (center-to-center 52.0mm)
+
+run_scene4_sweep: === starting run 19 (1/1) ===
+run_scene4_sweep: [scene4_run19] layout: basket_a=(0.690,-0.221), basket_b=(0.690,0.019), basket_c=(0.690,0.259), ball_a=(0.468,0.137), ball_b=(0.468,0.189), ball_c=(0.468,0.241), basket_d=(0.362,-0.039), target_basket=(0.690,0.259)
+run_scene4_sweep: [scene4_run19] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run19/video.mp4
+bag_to_video: done - 488 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run19/video.mp4
+bag_to_ee_trajectory: done - 975 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run19/ee_trajectory.csv
+
+run_scene4_sweep: === summary ===
+  scene4_run19: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run19

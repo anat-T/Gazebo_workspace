@@ -1,0 +1,42 @@
+
+run_scene1_sweep: === starting run 31 (1/5) ===
+run_scene1_sweep: [scene1_run31] layout: green_basket=(0.737,-0.259), red_basket=(0.369,-0.108), green_ball=(0.632,0.001), red_ball=(0.471,0.121)
+run_scene1_sweep: [scene1_run31] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run31/video.mp4
+bag_to_video: done - 532 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run31/video.mp4
+bag_to_ee_trajectory: done - 1063 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run31/ee_trajectory.csv
+
+run_scene1_sweep: === starting run 32 (2/5) ===
+run_scene1_sweep: [scene1_run32] layout: green_basket=(0.651,-0.216), red_basket=(0.546,0.089), green_ball=(0.437,0.259), red_ball=(0.319,-0.144)
+run_scene1_sweep: [scene1_run32] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run32/video.mp4
+bag_to_video: done - 484 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run32/video.mp4
+bag_to_ee_trajectory: done - 967 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run32/ee_trajectory.csv
+
+run_scene1_sweep: === starting run 33 (3/5) ===
+run_scene1_sweep: [scene1_run33] layout: green_basket=(0.385,-0.061), red_basket=(0.670,0.012), green_ball=(0.559,-0.257), red_ball=(0.380,-0.276)
+run_scene1_sweep: [scene1_run33] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run33/video.mp4
+bag_to_video: done - 474 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run33/video.mp4
+bag_to_ee_trajectory: done - 947 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run33/ee_trajectory.csv
+
+run_scene1_sweep: === starting run 34 (4/5) ===
+run_scene1_sweep: [scene1_run34] layout: green_basket=(0.318,-0.071), red_basket=(0.608,-0.273), green_ball=(0.327,0.238), red_ball=(0.744,-0.074)
+run_scene1_sweep: [scene1_run34] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run34/video.mp4
+bag_to_video: done - 502 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run34/video.mp4
+bag_to_ee_trajectory: done - 1003 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run34/ee_trajectory.csv
+
+run_scene1_sweep: === starting run 35 (5/5) ===
+run_scene1_sweep: [scene1_run35] layout: green_basket=(0.542,0.016), red_basket=(0.700,-0.168), green_ball=(0.306,0.211), red_ball=(0.641,0.261)
+run_scene1_sweep: [scene1_run35] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run35/video.mp4
+bag_to_video: done - 503 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run35/video.mp4
+bag_to_ee_trajectory: done - 1005 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run35/ee_trajectory.csv
+
+run_scene1_sweep: === summary ===
+  scene1_run31: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run31
+  scene1_run32: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run32
+  scene1_run33: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run33
+  scene1_run34: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run34
+  scene1_run35: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene1_runs/scene1_run35

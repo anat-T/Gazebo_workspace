@@ -5,3 +5,11 @@ recordings/
 __pycache__/
 *.pyc
 *.pt
+bags/*
+# Sweep recordings (rosbags ~450MB each) - never commit
+scene*_runs/
+*.db3
+
+# External packages fetched by `vcs import src < dependencies.repos` - not vendored
+ros2_ws/src/onrobot_2fg7/
+ros2_ws/src/onrobot_2fg7_interfaces/

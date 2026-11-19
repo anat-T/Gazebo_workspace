@@ -1,0 +1,309 @@
+[INFO] [launch]: All log files can be found below /home/anat/.ros/log/2026-09-10-14-08-22-708595-cisrob-09616-214739
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [dashboard_client-2]: process started with pid [214774]
+[INFO] [controller_stopper_node-4]: process started with pid [214778]
+[INFO] [ur_ros2_control_node-1]: process started with pid [214772]
+[INFO] [robot_state_helper-3]: process started with pid [214776]
+[INFO] [urscript_interface-5]: process started with pid [214780]
+[INFO] [robot_state_publisher-6]: process started with pid [214784]
+[INFO] [trajectory_until_node-7]: process started with pid [214789]
+[INFO] [spawner-8]: process started with pid [214792]
+[INFO] [spawner-9]: process started with pid [214798]
+[INFO] [status-10]: process started with pid [214800]
+[INFO] [grip-11]: process started with pid [214812]
+[INFO] [real_ball_sort_node-12]: process started with pid [214819]
+[dashboard_client-2] [0m[INFO] [1789038503.022598384] [UR_Client_Library:]: Starting primary client pipeline[0m
+[ur_ros2_control_node-1] [WARN] [1789038503.061218683] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+[ur_ros2_control_node-1] text not specified in the tf_prefix tag
+[ur_ros2_control_node-1] [INFO] [1789038503.061590319] [resource_manager]: Loading hardware 'ur5e' 
+[robot_state_publisher-6] [INFO] [1789038503.079302462] [robot_state_publisher]: got segment base
+[robot_state_publisher-6] [INFO] [1789038503.079402306] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-6] [INFO] [1789038503.079406964] [robot_state_publisher]: got segment base_link_inertia
+[robot_state_publisher-6] [INFO] [1789038503.079409861] [robot_state_publisher]: got segment flange
+[robot_state_publisher-6] [INFO] [1789038503.079412319] [robot_state_publisher]: got segment forearm_link
+[robot_state_publisher-6] [INFO] [1789038503.079414754] [robot_state_publisher]: got segment ft_frame
+[robot_state_publisher-6] [INFO] [1789038503.079417085] [robot_state_publisher]: got segment shoulder_link
+[robot_state_publisher-6] [INFO] [1789038503.079419449] [robot_state_publisher]: got segment tool0
+[robot_state_publisher-6] [INFO] [1789038503.079421826] [robot_state_publisher]: got segment upper_arm_link
+[robot_state_publisher-6] [INFO] [1789038503.079424064] [robot_state_publisher]: got segment world
+[robot_state_publisher-6] [INFO] [1789038503.079426289] [robot_state_publisher]: got segment wrist_1_link
+[robot_state_publisher-6] [INFO] [1789038503.079428569] [robot_state_publisher]: got segment wrist_2_link
+[robot_state_publisher-6] [INFO] [1789038503.079430845] [robot_state_publisher]: got segment wrist_3_link
+[ur_ros2_control_node-1] [INFO] [1789038503.082603881] [resource_manager]: Initialize hardware 'ur5e' 
+[ur_ros2_control_node-1] [INFO] [1789038503.082709139] [resource_manager]: Successful initialization of hardware 'ur5e'
+[ur_ros2_control_node-1] [INFO] [1789038503.082917715] [resource_manager]: 'configure' hardware 'ur5e' 
+[ur_ros2_control_node-1] [INFO] [1789038503.082923596] [URPositionHardwareInterface]: Starting ...please wait...
+[ur_ros2_control_node-1] [INFO] [1789038503.082933177] [URPositionHardwareInterface]: Initializing driver...
+[robot_state_helper-3] [INFO] [1789038503.084625492] [UR_Client_Library:]: Starting primary client pipeline
+[controller_stopper_node-4] [0m[INFO] [1789038503.101347685] [Controller stopper]: Waiting for switch controller service to come up on controller_manager/switch_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038503.251769792] [UR_Client_Library:]: Negotiated RTDE protocol version to 2.
+[ur_ros2_control_node-1] [INFO] [1789038503.252665769] [UR_Client_Library:]: Received URControl version 5.12.2.0
+[ur_ros2_control_node-1] [INFO] [1789038503.252697127] [UR_Client_Library:]: Setting up RTDE communication with frequency 500.000000
+[ur_ros2_control_node-1] [INFO] [1789038503.262553218] [UR_Client_Library:]: Starting primary client pipeline
+[dashboard_client-2] [0m[INFO] [1789038503.339220387] [dashboard_client]: Connecting to Dashboard Server at 10.240.10.2 with policy G5[0m
+[dashboard_client-2] [0m[INFO] [1789038503.339323516] [UR_Client_Library:]: DashboardClient created for host 10.240.10.2[0m
+[dashboard_client-2] [0m[INFO] [1789038503.340132312] [UR_Client_Library:]: Connected: Universal Robots Dashboard Server
+[dashboard_client-2] [0m
+[dashboard_client-2] [0m[INFO] [1789038503.352466062] [dashboard_client]: Successfully connected to Dashboard Server at 10.240.10.2. Robot has version 5.12.2.0[0m
+[spawner-8] [INFO] [1789038503.457930959] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
+[spawner-9] [INFO] [1789038503.480157121] [spawner_scaled_joint_trajectory_controller]: waiting for service /controller_manager/list_controllers to become available...
+[real_ball_sort_node-12] [INFO] [1789038503.487572294] [real_ball_sort_node]: === real_ball_sort: mission start ===
+[real_ball_sort_node-12] [INFO] [1789038503.487986615] [real_ball_sort_node]: real_ball_sort: waiting for 'joint_trajectory_controller' to become active - if it isn't already, go press Play on the pendant's External Control program now
+[ur_ros2_control_node-1] [INFO] [1789038505.481361610] [URPositionHardwareInterface]: Calibration checksum: 'calib_16918647095057164294'.
+[ur_ros2_control_node-1] [INFO] [1789038505.481408029] [URPositionHardwareInterface]: Calibration checked successfully.
+[ur_ros2_control_node-1] [INFO] [1789038505.481437138] [URPositionHardwareInterface]: System successfully started!
+[ur_ros2_control_node-1] [INFO] [1789038505.481455871] [resource_manager]: Successful 'configure' of hardware 'ur5e'
+[ur_ros2_control_node-1] [INFO] [1789038505.481494036] [resource_manager]: 'activate' hardware 'ur5e' 
+[ur_ros2_control_node-1] [INFO] [1789038505.481497292] [URPositionHardwareInterface]: Activating HW interface
+[ur_ros2_control_node-1] [INFO] [1789038505.481500290] [resource_manager]: Successful 'activate' of hardware 'ur5e'
+[controller_stopper_node-4] [0m[INFO] [1789038505.486460846] [Controller stopper]: Service available[0m
+[controller_stopper_node-4] [0m[INFO] [1789038505.486501948] [Controller stopper]: Waiting for list controllers service to come up on controller_manager/list_controllers[0m
+[controller_stopper_node-4] [0m[INFO] [1789038505.486516800] [Controller stopper]: Service available[0m
+[ur_ros2_control_node-1] [WARN] [1789038505.487634383] [controller_manager]: Could not enable FIFO RT scheduling policy
+[ur_ros2_control_node-1] [WARN] [1789038505.488130099] [UR_Client_Library:]: Your system/user seems not to be setup for FIFO scheduling. We recommend using a lowlatency kernel with FIFO scheduling. See https://docs.universal-robots.com/Universal_Robots_ROS_Documentation/doc/ur_client_library/doc/real_time.html for details.
+[real_ball_sort_node-12] [INFO] [1789038505.491589086] [real_ball_sort_node]: real_ball_sort: still waiting for 'joint_trajectory_controller' to activate (press Play on the pendant if you haven't)...
+[ur_ros2_control_node-1] [INFO] [1789038505.794034065] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[spawner-8] [INFO] [1789038505.804587152] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_state_broadcaster[0m
+[ur_ros2_control_node-1] [INFO] [1789038505.815962080] [controller_manager]: Loading controller 'scaled_joint_trajectory_controller'
+[ur_ros2_control_node-1] [INFO] [1789038505.829956430] [scaled_joint_trajectory_controller]: Using scaling state from the hardware from interface speed_scaling/speed_scaling_factor.
+[ur_ros2_control_node-1] [WARN] [1789038505.833071007] [scaled_joint_trajectory_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[spawner-9] [INFO] [1789038505.834400136] [spawner_scaled_joint_trajectory_controller]: [94mLoaded [1mscaled_joint_trajectory_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038505.835377855] [controller_manager]: Configuring controller 'scaled_joint_trajectory_controller'
+[ur_ros2_control_node-1] [INFO] [1789038505.835521397] [scaled_joint_trajectory_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ur_ros2_control_node-1] [INFO] [1789038505.835550143] [scaled_joint_trajectory_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ur_ros2_control_node-1] [INFO] [1789038505.835583476] [scaled_joint_trajectory_controller]: Using 'splines' interpolation method.
+[ur_ros2_control_node-1] [INFO] [1789038505.837012775] [scaled_joint_trajectory_controller]: Controller state will be published at 100.00 Hz.
+[ur_ros2_control_node-1] [INFO] [1789038505.840082493] [scaled_joint_trajectory_controller]: Action status changes will be monitored at 20.00 Hz.
+[ur_ros2_control_node-1] [INFO] [1789038505.853636692] [controller_manager]: Loading controller 'forward_velocity_controller'
+[spawner-9] [INFO] [1789038505.870563004] [spawner_scaled_joint_trajectory_controller]: [94mLoaded [1mforward_velocity_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038505.870775557] [controller_manager]: Configuring controller 'forward_velocity_controller'
+[ur_ros2_control_node-1] [INFO] [1789038505.871986173] [forward_velocity_controller]: configure successful
+[ur_ros2_control_node-1] [INFO] [1789038505.875710846] [controller_manager]: Loading controller 'forward_position_controller'
+[spawner-9] [INFO] [1789038505.887476909] [spawner_scaled_joint_trajectory_controller]: [94mLoaded [1mforward_position_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038505.887888880] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+[ur_ros2_control_node-1] [INFO] [1789038505.887944567] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[ur_ros2_control_node-1] [INFO] [1789038505.893603387] [controller_manager]: Configuring controller 'forward_position_controller'
+[ur_ros2_control_node-1] [INFO] [1789038505.895955968] [forward_position_controller]: configure successful
+[spawner-8] [INFO] [1789038505.902929345] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_state_broadcaster[0m
+[ur_ros2_control_node-1] [INFO] [1789038505.904156074] [controller_manager]: Loading controller 'forward_effort_controller'
+[ur_ros2_control_node-1] [INFO] [1789038505.920341033] [controller_manager]: Loading controller 'io_and_status_controller'
+[spawner-9] [INFO] [1789038505.920961575] [spawner_scaled_joint_trajectory_controller]: [94mLoaded [1mforward_effort_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038505.937977213] [controller_manager]: Configuring controller 'forward_effort_controller'
+[ur_ros2_control_node-1] [INFO] [1789038505.938365753] [forward_effort_controller]: configure successful
+[spawner-8] [INFO] [1789038505.938933850] [spawner_joint_state_broadcaster]: [94mLoaded [1mio_and_status_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038505.940028761] [controller_manager]: Configuring controller 'io_and_status_controller'
+[ur_ros2_control_node-1] [INFO] [1789038505.962051856] [controller_manager]: Loading controller 'force_mode_controller'
+[robot_state_helper-3] [INFO] [1789038505.962411557] [robot_state_helper]: The robot is currently in safety mode NORMAL.
+[robot_state_helper-3] [INFO] [1789038505.962436529] [robot_state_helper]: The robot is currently in mode RUNNING.
+[spawner-8] [INFO] [1789038505.963556383] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mio_and_status_controller[0m
+[spawner-9] [INFO] [1789038505.984688694] [spawner_scaled_joint_trajectory_controller]: [94mLoaded [1mforce_mode_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038505.984919698] [controller_manager]: Loading controller 'speed_scaling_state_broadcaster'
+[ur_ros2_control_node-1] [INFO] [1789038506.001728839] [speed_scaling_state_broadcaster]: Loading UR SpeedScalingStateBroadcaster with tf_prefix: 
+[spawner-8] [INFO] [1789038506.004342771] [spawner_joint_state_broadcaster]: [94mLoaded [1mspeed_scaling_state_broadcaster[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.004771072] [controller_manager]: Configuring controller 'force_mode_controller'
+[ur_ros2_control_node-1] [INFO] [1789038506.019474683] [controller_manager]: Configuring controller 'speed_scaling_state_broadcaster'
+[ur_ros2_control_node-1] [INFO] [1789038506.019525279] [speed_scaling_state_broadcaster]: Publisher rate set to : 100.0 Hz
+[ur_ros2_control_node-1] [INFO] [1789038506.022426228] [controller_manager]: Loading controller 'passthrough_trajectory_controller'
+[spawner-9] [INFO] [1789038506.042367684] [spawner_scaled_joint_trajectory_controller]: [94mLoaded [1mpassthrough_trajectory_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.047601501] [controller_manager]: Configuring controller 'passthrough_trajectory_controller'
+[spawner-8] [INFO] [1789038506.051766897] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mspeed_scaling_state_broadcaster[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.054369894] [controller_manager]: Loading controller 'freedrive_mode_controller'
+[ur_ros2_control_node-1] [INFO] [1789038506.072114017] [controller_manager]: Loading controller 'force_torque_sensor_broadcaster'
+[spawner-9] [INFO] [1789038506.072504354] [spawner_scaled_joint_trajectory_controller]: [94mLoaded [1mfreedrive_mode_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.090651311] [controller_manager]: Configuring controller 'freedrive_mode_controller'
+[spawner-8] [INFO] [1789038506.091634455] [spawner_joint_state_broadcaster]: [94mLoaded [1mforce_torque_sensor_broadcaster[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.094215332] [controller_manager]: Configuring controller 'force_torque_sensor_broadcaster'
+[ur_ros2_control_node-1] [INFO] [1789038506.102190355] [controller_manager]: Loading controller 'tool_contact_controller'
+[spawner-8] [INFO] [1789038506.102567802] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mforce_torque_sensor_broadcaster[0m
+[spawner-9] [INFO] [1789038506.116658629] [spawner_scaled_joint_trajectory_controller]: [94mLoaded [1mtool_contact_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.117648072] [controller_manager]: Loading controller 'tcp_pose_broadcaster'
+[spawner-8] [INFO] [1789038506.132391060] [spawner_joint_state_broadcaster]: [94mLoaded [1mtcp_pose_broadcaster[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.133191983] [controller_manager]: Configuring controller 'tool_contact_controller'
+[ur_ros2_control_node-1] [INFO] [1789038506.142191049] [controller_manager]: Configuring controller 'tcp_pose_broadcaster'
+[spawner-8] [INFO] [1789038506.153024271] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mtcp_pose_broadcaster[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.155894184] [controller_manager]: Loading controller 'ur_configuration_controller'
+[spawner-8] [INFO] [1789038506.179610893] [spawner_joint_state_broadcaster]: [94mLoaded [1mur_configuration_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.179872548] [controller_manager]: Configuring controller 'ur_configuration_controller'
+[spawner-8] [INFO] [1789038506.188546892] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mur_configuration_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.190199931] [controller_manager]: Loading controller 'friction_model_controller'
+[spawner-8] [INFO] [1789038506.207980085] [spawner_joint_state_broadcaster]: [94mLoaded [1mfriction_model_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.209728206] [controller_manager]: Configuring controller 'friction_model_controller'
+[spawner-8] [INFO] [1789038506.218856733] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mfriction_model_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.221159247] [controller_manager]: Loading controller 'joint_trajectory_controller'
+[ur_ros2_control_node-1] [WARN] [1789038506.253773587] [joint_trajectory_controller]: [Deprecated]: "allow_nonzero_velocity_at_trajectory_end" is set to true. The default behavior will change to false.
+[spawner-8] [INFO] [1789038506.255837734] [spawner_joint_state_broadcaster]: [94mLoaded [1mjoint_trajectory_controller[0m
+[ur_ros2_control_node-1] [INFO] [1789038506.256158702] [controller_manager]: Configuring controller 'joint_trajectory_controller'
+[ur_ros2_control_node-1] [INFO] [1789038506.256263330] [joint_trajectory_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ur_ros2_control_node-1] [INFO] [1789038506.256274433] [joint_trajectory_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ur_ros2_control_node-1] [INFO] [1789038506.256284211] [joint_trajectory_controller]: Using 'splines' interpolation method.
+[ur_ros2_control_node-1] [INFO] [1789038506.257907692] [joint_trajectory_controller]: Controller state will be published at 100.00 Hz.
+[ur_ros2_control_node-1] [INFO] [1789038506.261050598] [joint_trajectory_controller]: Action status changes will be monitored at 20.00 Hz.
+[spawner-8] [INFO] [1789038506.275012331] [spawner_joint_state_broadcaster]: [92mConfigured and activated [1mjoint_trajectory_controller[0m
+[INFO] [spawner-9]: process has finished cleanly [pid 214798]
+[ur_ros2_control_node-1] [INFO] [1789038506.319125661] [controller_manager]: Switch controller timeout is set to 0, using default 1s!
+[INFO] [spawner-8]: process has finished cleanly [pid 214792]
+[real_ball_sort_node-12] [INFO] [1789038506.494680498] [real_ball_sort_node]: real_ball_sort: 'joint_trajectory_controller' is active - proceeding
+[real_ball_sort_node-12] [INFO] [1789038506.495031700] [real_ball_sort_node]: grasp: requesting detach (open), gap=70.0mm force=50N speed=50%
+[real_ball_sort_node-12] [INFO] [1789038506.505376700] [real_ball_sort_node]: grasp: detach (open) service accepted, status=0
+[real_ball_sort_node-12] [INFO] [1789038506.505712345] [real_ball_sort_node]: grasp: detach (open) settled - grip_detected=False, internal_width=59.0mm, external_width=45.0mm
+[real_ball_sort_node-12] [INFO] [1789038506.505910929] [real_ball_sort_node]: real_ball_sort: waiting 2.0s before the first arm move, for the robot's reverse-interface connection to actually settle
+[ur_ros2_control_node-1] [INFO] [1789038506.601066484] [UR_Client_Library:]: Robot requested program
+[ur_ros2_control_node-1] [INFO] [1789038506.601165425] [UR_Client_Library:]: Sent program to robot
+[ur_ros2_control_node-1] [INFO] [1789038507.588228114] [UR_Client_Library:]: Robot connected to reverse interface. Ready to receive control commands.
+[urscript_interface-5] [1789038503.083920] INFO ./src/primary/primary_client.cpp 75: Starting primary client pipeline 
+[real_ball_sort_node-12] [INFO] [1789038508.508323954] [real_ball_sort_node]: real_ball_sort: approaching ball at (0.107, 0.439, 0.113)
+[real_ball_sort_node-12] [INFO] [1789038508.736653191] [real_ball_sort_node]: arm_commander[]: -> [-1.665, -4.484, 1.921, -1.826, -1.855, -0.0] over 15.0s
+[robot_state_helper-3] [INFO] [1789038516.791977014] [robot_state_helper]: The robot is currently in safety mode ROBOT_EMERGENCY_STOP.
+[robot_state_helper-3] [INFO] [1789038516.821955881] [robot_state_helper]: The robot is currently in mode POWER_ON.
+[robot_state_helper-3] [INFO] [1789038516.871322570] [UR_Client_Library:]: Logging an ErrorCodeMessage from the UR Controller Box: C100A4
+[ur_ros2_control_node-1] [INFO] [1789038516.871362007] [UR_Client_Library:]: Logging an ErrorCodeMessage from the UR Controller Box: C100A4
+[robot_state_helper-3] [INFO] [1789038517.095960555] [robot_state_helper]: The robot is currently in mode IDLE.
+[status-10] [WARN] [1789038517.118968184] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[robot_state_helper-3] [INFO] [1789038517.177929805] [UR_Client_Library:]: Logging an ErrorCodeMessage from the UR Controller Box: C100A5
+[ur_ros2_control_node-1] [INFO] [1789038517.177972882] [UR_Client_Library:]: Logging an ErrorCodeMessage from the UR Controller Box: C100A5
+[status-10] [WARN] [1789038517.310101389] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038517.509998887] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038517.710069408] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[ur_ros2_control_node-1] [ERROR] [1789038517.807854305] [tolerances]: State tolerances failed for joint 1:
+[ur_ros2_control_node-1] [ERROR] [1789038517.807900386] [tolerances]: Position Error: -0.200129, Position Tolerance: 0.200000
+[ur_ros2_control_node-1] [ERROR] [1789038517.807909244] [joint_trajectory_controller]: Holding position due to state tolerance violation
+[status-10] [WARN] [1789038517.910035834] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[urscript_interface-5] [1789038516.871289] INFO ./include/ur_client_library/primary/primary_consumer.h 149: Logging an ErrorCodeMessage from the UR Controller Box: C100A4 
+[urscript_interface-5] [1789038517.177657] INFO ./include/ur_client_library/primary/primary_consumer.h 149: Logging an ErrorCodeMessage from the UR Controller Box: C100A5 
+[status-10] [WARN] [1789038518.109966265] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038518.309876649] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038518.509771991] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038518.709926497] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038518.909906420] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038519.109964487] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038519.309849915] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038519.509788114] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038519.709952986] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038519.909907550] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038520.109888601] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038520.309790851] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038520.509754510] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038520.709690757] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038520.909729039] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038521.109813260] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038521.309779559] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038521.510283862] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038521.709854201] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038521.909862433] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038522.110002349] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038522.309916766] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038522.509770723] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038522.709876573] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[ur_ros2_control_node-1] [INFO] [1789038522.732344727] [UR_Client_Library:]: Robot requested program
+[ur_ros2_control_node-1] [INFO] [1789038522.732405492] [UR_Client_Library:]: Sent program to robot
+[status-10] [WARN] [1789038522.910077154] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038523.109897189] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038523.309799184] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038523.509797100] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038523.709897278] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038523.909822162] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038524.109748159] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[real_ball_sort_node-12] [INFO] [1789038524.250944850] [real_ball_sort_node]: arm_commander[]: -> [-1.669, -4.563, 1.911, -1.799, -1.868, -0.0] over 15.0s
+[status-10] [WARN] [1789038524.309740522] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038524.509818313] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038524.709749523] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038524.909821727] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038525.109974030] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038525.309958011] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038525.510069507] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038525.709860403] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038525.909899443] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038526.109955874] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038526.309829783] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[ur_ros2_control_node-1] [ERROR] [1789038526.349860850] [tolerances]: State tolerances failed for joint 1:
+[ur_ros2_control_node-1] [ERROR] [1789038526.349895158] [tolerances]: Position Error: -0.200126, Position Tolerance: 0.200000
+[ur_ros2_control_node-1] [ERROR] [1789038526.349904482] [joint_trajectory_controller]: Holding position due to state tolerance violation
+[status-10] [WARN] [1789038526.509834952] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038526.709840618] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038526.909973326] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038527.109768566] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038527.309859289] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038527.510261552] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038527.710046828] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038527.910072542] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038528.109840722] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038528.309874194] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038528.509874692] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038528.709896869] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038528.909855129] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038529.109913467] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038529.309829115] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038529.509851007] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038529.709859413] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038529.909956206] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038530.109882156] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038530.309914317] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038530.509894304] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038530.709917546] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038530.910153231] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038531.109857409] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038531.309855348] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038531.509805243] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038531.709987347] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038531.910065717] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038532.110773898] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038532.310777734] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038532.509852426] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038532.709921246] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038532.909852875] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038533.109906483] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038533.309915837] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038533.510233658] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038533.709781855] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038533.909962323] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038534.109997003] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038534.311518964] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038534.512235933] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038534.709912613] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038534.911434283] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038535.109912446] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038535.309972545] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038535.509692865] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038535.709825874] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038535.909902280] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038536.109950902] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038536.309803731] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038536.509784947] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038536.709847669] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038536.909719234] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038537.109747661] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038537.309937071] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038537.509770097] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[robot_state_helper-3] [INFO] [1789038537.631982522] [robot_state_helper]: The robot is currently in safety mode NORMAL.
+[status-10] [WARN] [1789038537.709835632] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038537.909867334] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038538.109827306] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038538.309835720] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038538.509804262] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038538.709819522] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038538.909841885] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038539.109885631] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038539.309787666] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038539.510032833] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[status-10] [WARN] [1789038539.709801314] [onrobot_2fg7_status_publisher]: Key error: "'status'", probably received an empty response from server, check debug log for details.
+[robot_state_helper-3] [INFO] [1789038540.951994772] [robot_state_helper]: The robot is currently in mode RUNNING.
+[robot_state_helper-3] [INFO] [1789038540.966079662] [UR_Client_Library:]: Logging an ErrorCodeMessage from the UR Controller Box: C100A7
+[ur_ros2_control_node-1] [INFO] [1789038540.966099239] [UR_Client_Library:]: Logging an ErrorCodeMessage from the UR Controller Box: C100A7
+[real_ball_sort_node-12] [INFO] [1789038541.199650658] [real_ball_sort_node]: arm_commander[]: -> [1.031, -1.528, 2.172, -2.215, -1.571, -0.0] over 15.0s
+[ur_ros2_control_node-1] [ERROR] [1789038542.761853700] [tolerances]: State tolerances failed for joint 0:
+[ur_ros2_control_node-1] [ERROR] [1789038542.761892154] [tolerances]: Position Error: 0.200071, Position Tolerance: 0.200000
+[ur_ros2_control_node-1] [ERROR] [1789038542.761901307] [joint_trajectory_controller]: Holding position due to state tolerance violation
+[urscript_interface-5] [1789038540.966061] INFO ./include/ur_client_library/primary/primary_consumer.h 149: Logging an ErrorCodeMessage from the UR Controller Box: C100A7 
+[ur_ros2_control_node-1] [INFO] [1789038549.757379524] [UR_Client_Library:]: Connection to reverse interface dropped.
+[real_ball_sort_node-12] [INFO] [1789038556.708934884] [real_ball_sort_node]: grasp: requesting attach (close), gap=45.0mm force=50N speed=50%
+[real_ball_sort_node-12] [INFO] [1789038556.715175626] [real_ball_sort_node]: grasp: attach (close) service accepted, status=0
+[real_ball_sort_node-12] [INFO] [1789038556.715494608] [real_ball_sort_node]: grasp: attach (close) settled - grip_detected=False, internal_width=83.5mm, external_width=69.5mm
+[real_ball_sort_node-12] [INFO] [1789038556.719071288] [real_ball_sort_node]: arm_commander[]: -> [1.04, -1.662, 2.16, -2.184, -1.586, -0.0] over 15.0s
+[real_ball_sort_node-12] [INFO] [1789038572.237402174] [real_ball_sort_node]: arm_commander[]: -> [1.046, -1.741, 2.144, -2.17, -1.596, -0.0] over 15.0s
+[real_ball_sort_node-12] [INFO] [1789038587.980434960] [real_ball_sort_node]: arm_commander[]: -> [1.197, -0.728, 1.065, -2.669, -1.439, -0.0] over 15.0s
+[real_ball_sort_node-12] [INFO] [1789038603.500173654] [real_ball_sort_node]: arm_commander[]: -> [1.197, -0.657, 1.068, -2.67, -1.437, -0.0] over 15.0s
+[real_ball_sort_node-12] [INFO] [1789038619.006945696] [real_ball_sort_node]: arm_commander[]: -> [1.196, -0.598, 1.061, -2.675, -1.435, -0.0] over 15.0s
+[real_ball_sort_node-12] [INFO] [1789038634.522632265] [real_ball_sort_node]: grasp: requesting detach (open), gap=70.0mm force=50N speed=50%
+[real_ball_sort_node-12] [INFO] [1789038634.533593054] [real_ball_sort_node]: grasp: detach (open) service accepted, status=0
+[real_ball_sort_node-12] [INFO] [1789038634.533926201] [real_ball_sort_node]: grasp: detach (open) settled - grip_detected=False, internal_width=58.9mm, external_width=44.9mm
+[real_ball_sort_node-12] [INFO] [1789038634.539047702] [real_ball_sort_node]: arm_commander[]: -> [1.197, -0.726, 1.063, -2.671, -1.438, -0.0] over 15.0s

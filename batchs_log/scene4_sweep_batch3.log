@@ -1,0 +1,19 @@
+run_scene4_sweep: ball gap 2.0mm (center-to-center 52.0mm)
+
+run_scene4_sweep: === starting run 11 (1/2) ===
+run_scene4_sweep: [scene4_run11] layout: basket_a=(0.364,-0.205), basket_b=(0.364,0.035), basket_c=(0.364,0.275), ball_a=(0.590,0.058), ball_b=(0.590,0.110), ball_c=(0.590,0.162), basket_d=(0.618,-0.172), target_basket=(0.364,0.275)
+run_scene4_sweep: [scene4_run11] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run11/video.mp4
+bag_to_video: done - 482 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run11/video.mp4
+bag_to_ee_trajectory: done - 964 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run11/ee_trajectory.csv
+
+run_scene4_sweep: === starting run 12 (2/2) ===
+run_scene4_sweep: [scene4_run12] layout: basket_a=(0.340,-0.233), basket_b=(0.340,0.007), basket_c=(0.340,0.247), ball_a=(0.672,-0.038), ball_b=(0.672,0.014), ball_c=(0.672,0.066), basket_d=(0.591,-0.262), target_basket=(0.340,0.247)
+run_scene4_sweep: [scene4_run12] mission outcome: SUCCESS
+bag_to_video: writing 640x480 @ 10.0fps -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run12/video.mp4
+bag_to_video: done - 482 frames written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run12/video.mp4
+bag_to_ee_trajectory: done - 962 samples (0 skipped) written to /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run12/ee_trajectory.csv
+
+run_scene4_sweep: === summary ===
+  scene4_run11: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run11
+  scene4_run12: SUCCESS  -> /home/anat/code/box_pick_and_place_gazebo_demo/scene4_runs/scene4_run12
